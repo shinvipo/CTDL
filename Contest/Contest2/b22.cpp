@@ -1,81 +1,41 @@
-#include <bits/stdc++.h> 
-#define MAX 5 
-using namespace std; 
+#include<bits/stdc++.h>
 
-bool isSafe(int row, int col, int m[][MAX], int n, bool visited[][MAX]) 
-{ 
-    if (row == -1 || row == n || col == -1 ||  col == n || visited[row][col] || m[row][col] == 0) 
-        return false; 
-    return true; 
-} 
-  
-void printPathUtil(int row, int col, int m[][MAX], int n, string& path, vector<string>& possiblePaths, bool visited[][MAX]) 
-{ 
-    if (row == -1 || row == n || col == -1  || col == n || visited[row][col]  || m[row][col] == 0) 
-        return; 
+using namespace std;
 
-    if (row == n - 1 && col == n - 1) { 
-        possiblePaths.push_back(path); 
-        return; 
-    } 
-  
-    visited[row][col] = true; 
+int n, a[100][100]; string s;
+int kt = 0, k=0;
 
-    if (isSafe(row + 1, col, m, n, visited)) 
-    { 
-        path.push_back('D'); 
-        printPathUtil(row + 1, col, m, n, path, possiblePaths, visited); 
-        path.pop_back(); 
-    } 
-  
-    if (isSafe(row, col - 1, m, n, visited)) 
-    { 
-        path.push_back('L'); 
-        printPathUtil(row, col - 1, m, n, path, possiblePaths, visited); 
-        path.pop_back(); 
-    } 
-  
-    if (isSafe(row, col + 1, m, n, visited))  
-    { 
-        path.push_back('R'); 
-        printPathUtil(row, col + 1, m, n, path, possiblePaths, visited); 
-        path.pop_back(); 
-    } 
-  
-    if (isSafe(row - 1, col, m, n, visited)) 
-    { 
-        path.push_back('U'); 
-        printPathUtil(row - 1, col, m, n, 
-               path, possiblePaths, visited); 
-        path.pop_back(); 
-    } 
+void display(int k)
+{
+    for(int i= 0; i< k; ++i)
+        cout << s[i];
+    cout << " ";
+}
 
-    visited[row][col] = false; 
-} 
- 
-void printPath(int m[MAX][MAX], int n) 
-{ 
-    vector<string> possiblePaths; 
-    string path; 
-    bool visited[n][MAX]; 
-    memset(visited, false, sizeof(visited)); 
+void Try(int i, int j, int k){
+    if(i == n && j == n){
+        display(k);
+        kt = 1;
+        return;
+    }
+    if( i < n && a[i+1][j] == 1){
+        s[k] ='D'; k++;
+        Try(i+1,j, k);
+    }
+    if(j < n && a[i][j+1] == 1){
+        s[k] = 'R' ; k++;
+        Try(i, j+1, k);
+    }
+}
 
-    printPathUtil(0, 0, m, n, path, possiblePaths, visited); 
-  
-    for (int i = 0; i < possiblePaths.size(); i++) 
-        cout << possiblePaths[i] << " "; 
-} 
-  
-// Driver code 
-int main() 
-{ 
-    int m[MAX][MAX] = { { 1, 0, 0, 0, 0 }, 
-                        { 1, 1, 1, 1, 1 }, 
-                        { 1, 1, 1, 0, 1 }, 
-                        { 0, 0, 0, 0, 1 }, 
-                        { 0, 0, 0, 0, 1 } }; 
-    int n = sizeof(m) / sizeof(m[0]); 
-    printPath(m, n); 
-  
-    return 0; 
-} 
+int main(){
+    cin >> n;
+    s="";
+    for(int i = 1; i<= n ; ++i)
+        for(int j = 1; j <= n; ++j)
+            cin >> a[i][j];
+
+    Try(1,1,0);
+    if(kt == 0)  cout << -1 <<endl;
+    return 0;
+}
