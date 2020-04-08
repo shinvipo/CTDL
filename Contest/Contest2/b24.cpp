@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int a[101], b[101], n, sum, check;
+int a[101], b[101], n, sum, check=0;
 
 void display(){
     int t = 0, c[101], k=1;
@@ -31,11 +31,14 @@ void Try(int i){
 
 int main(){
     xxx;
-    // int t;   cin >> t;
-    // while(--t){}
-    cin >> n >> sum;
-    for(int i = 1; i <= n; ++i) cin >> a[i];
-    sort(a+1, a+n+1);
-    Try(1);
+    int t;   cin >> t;
+    while(t--){
+        cin >> n >> sum;
+        for(int i = 1; i<= n; ++i)   cin >> a[i];
+        sort(a+1,a+1+n);
+        Try(1);
+        if(check == 0)  cout <<-1;
+        cout << endl;
+    }
     return 0;
 }
