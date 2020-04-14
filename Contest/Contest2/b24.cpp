@@ -33,12 +33,16 @@ int main(){
     xxx;
     int t;   cin >> t;
     while(t--){
+        check = 0; sum = 0;
         cin >> n >> sum;
         for(int i = 1; i<= n; ++i)   cin >> a[i];
         sort(a+1,a+1+n);
-        Try(1);
-        if(check == 0)  cout <<-1;
-        cout << endl;
+        if(sum == 0)    cout <<-1<<endl;
+        else{
+            Try(1);
+            if(check == 0)  cout <<-1;
+            cout << endl;
+        }
     }
     return 0;
 }

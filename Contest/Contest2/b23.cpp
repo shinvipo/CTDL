@@ -24,19 +24,19 @@ void Try(int row, int col ){
         path.pop_back();
         visited[row+1][col] = 0;    
     }
-    if(col < n && a[row][col + 1] && visited[row][col +1] == 0){
-        path.push_back('R');
-        visited[row][col +1] = 1;
-        Try(row, col +1);
-        path.pop_back();
-        visited[row][col +1] = 0;
-    }
     if(col > 1 && a[row][col -1] && visited[row][col -1] == 0){
         path.push_back('L');
         visited[row][col -1] = 1;
         Try(row , col -1);
         path.pop_back();
         visited[row][col -1] = 0;
+    }
+    if(col < n && a[row][col + 1] && visited[row][col +1] == 0){
+        path.push_back('R');
+        visited[row][col +1] = 1;
+        Try(row, col +1);
+        path.pop_back();
+        visited[row][col +1] = 0;
     }
     if(row > 1 && a[row -1][col] && visited[row -1][col] == 0){
         path.push_back('U');
@@ -52,10 +52,15 @@ int main(){
     int t;   cin >> t;
     while(t--){
         cin >> n;
+        check =0;
         for(int i = 1; i <= n; ++i) for(int j =1 ; j <= n; ++j) cin >> a[i][j];
-        Try(1,1);
-        if(check == 0) cout << -1;
-        cout <<endl;
+        if(a[1][1] == 0) cout <<-1<<endl;
+        else{
+            visited[1][1] = 1;
+            Try(1,1);
+            if(check == 0) cout << -1;
+            cout <<endl;
+        }
     }
     return 0;
 }

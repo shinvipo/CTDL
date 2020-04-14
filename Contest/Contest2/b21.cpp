@@ -3,14 +3,18 @@
 using namespace std;
 
 int main() {
-    ios::sync_with_stdio(false); cin.tie(0);
-    string s; cin >> s;
-//    sort(s.begin(), s.end());
-    string res;
-    while(next_permutation(s.begin(), s.end())){
-    	res+= s;
-    	res+='\n';
+    int t; cin >> t;
+    while(t--){
+    	string s; cin >> s;
+        sort(s.begin(), s.end());
+        string res = "";
+        res += s;
+        res += " ";
+        while(next_permutation(s.begin(), s.end())){
+            res+= s;
+            res+=' ';
+        }
+        cout << res <<endl;
 	}
-	cout << res;
     return 0;
 }

@@ -1,25 +1,40 @@
-//-------------Shinvipo----------------
-
 #include<bits/stdc++.h>
-#define fast ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#include<iostream>
+#define xxx ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define ll long long 
+
 using namespace std;
 
+
+void init(){
+    vector<int> a;
+    vector<int> b;
+    vector<int> c;
+    int k =10;
+    for(int i=0; i< 15; ++i)
+        a.push_back(i);
+
+    b = vector<int>(a);
+    
+    cout << "Vector a   :   ";
+    for(int i=1; i< a.size() ; ++i) cout <<a[i] <<" ";
+    cout <<endl<< "Vector  B    :   ";
+    for(auto i:b)   cout << b[i] <<" ";
+
+    c= vector<int> (k,0);
+    cout <<endl;
+    for(auto i:c)   cout << c[i]<<" ";
+
+}
+
 int main(){
-    fast;
-    // int t;   cin >> t;
-    // while(--t){}
-    int a[101][101];
-    int ans =0; int n=5,row,col;
-    // i = rows j = col
-    for( row=1; row<= n; ++row)    for(col= 1; col <= n; ++col)    if(row==3 && col==5) a[row][col] = 1;
-    for( row=1; row<= n; ++row)    {
-        for(col= 1; col <= n; ++col){
-            cout<< a[row][col]<<"\t";
-        }   
-        cout << endl;
+    xxx
+    int t; cin >> t;
+    while(t--){
+        init();
+
     }
-    cout <<"***********************"<<endl;
-    row = 3, col = 5;
-    cout << a[3][5];
     return 0;
 }
+
+//copy by shincrab
