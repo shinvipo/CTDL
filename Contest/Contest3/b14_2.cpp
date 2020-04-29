@@ -5,39 +5,46 @@ using namespace std;
 typedef long long ll; 
 const ll MAX = 1E7 + 5;
 const ll mod = 1E9 + 7;
-int s,d; 
 
-void init(){
-    cin >> s >> d;
+string s;
+vector < int > x;
+int n;
+ll res = 0;
 
-    int x = s/d;
-    int y = s - x*d; 
-    if( s > 9*d ) {
-        cout << -1 << '\n';
-        return;
-    }
-    int a[d+5] ;
-    for(int i = 0 ; i < d ; i++) a[i] = x;
-    if( x == 0 ) a[0] = 1 , y--;
-    int pos = d - 1 ;
-    for(int i = d - 1 ; i >= 0 , y > 0; i--){
-        while(a[i] < 9 && y > 0) a[i]++ , y--;
-        if( a[i] == 9) pos = i - 1;
-    }
-    while(a[0] > 1 && pos != 0 && a[pos] < 9){
-        a[0]--; a[pos]++;
-        if(a[pos] == 9) pos--;
-    }
-    for(int i = 1 ; i < d ; i++){
-        if(i >= pos) break;
-        while(a[i] != 0 && pos != i && a[pos] < 9){
-            a[i]--; a[pos]++;
-            if(a[pos] == 9) pos--;
+ll BS(ll sum){
+    ll l = 0 , r = 1e6 + 5 , mid , ans = 0 ;
+    while( l <= r){
+        mid = l+ r >> 1;
+        if( mid*mid*mid > sum) r = mid - 1;
+        else{
+            l = mid + 1;
+            ans = max(ans,mid);
         }
     }
-    for(int i = 0 ; i < d ; i++)
-        cout << a[i];
-    cout << '\n';
+    return ans;
+}
+void update(){
+    ll sum = 0;
+    for(int i = 0 ; i < n ; i++){
+        if( x[i] == 1) sum = sum*10 + (s[i]-'0');
+    }
+    ll z = BS(sum);
+    if( z * z * z == sum ) res = max(res,sum);
+}
+void Try(int i){
+    for(int j = 0 ; j <= 1 ; j++){
+        x[i] = j;
+        if( i == n - 1) update();
+        else Try(i+1);
+    }
+}
+void init(){
+    cin >> s;
+    n = s.length() , res = 0;
+    x.resize(n);
+
+    Try(0);
+    cout << ((res == 0)?-1:res )<< '\n';
 }
 
 int main(){
