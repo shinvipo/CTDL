@@ -47,8 +47,8 @@ bool check(){
 }
 void display(){
 	for(int i=1; i<=n ;i++){
-		cout<<a[i];
+		cout<<a[i]<< " ";
 	}
-	cout<<" ";
+	cout<<endl;
 	
 }

@@ -1,0 +1,20 @@
+200701 191515.441|CONFIG|main|setFileHandlers|Now logging to C:\Users\Admin\Desktop\CTDL\pc2Client\bin\logs directory.
+200701 191515.443|INFO|main|info|
+200701 191515.445|INFO|main|info|Version 9.6.0 20190102 (Wednesday, January 2nd 2019 01:20 UTC) Java ver 1.8.0_241 build 5102 Windows 10 10.0 (amd64) 
+200701 191515.446|INFO|main|startLog|Working directory is C:\Users\Admin\Desktop\CTDL\pc2Client\bin
+200701 191515.458|INFO|main|startLog|Process id is 5644@Admin
+200701 191515.458|INFO|main|start|Starting ConnectionManager...
+200701 191515.852|INFO|main|start|Started ConnectionManager
+200701 191515.856|INFO|main|setClientServerAndPort|INIFile File location: file:/C:/Users/Admin/Desktop/CTDL/pc2Client/bin/pc2v9.ini
+200701 191515.856|INFO|main|setClientServerAndPort|setClientServerAndPort 203.162.10.117 parsed as 203.162.10.117 port 50002
+200701 191515.856|INFO|main|info|Contacting server at 203.162.10.117:50002
+200701 191515.857|INFO|main|connectToMyServer|Connecting to 203.162.10.117:50002
+200701 191518.217|INFO|main|<init>|IO Exception:203.162.10.117
+200701 191518.217|INFO|main|connectToMyServer|Could not ConnectToMyServer()
+200701 191518.218|INFO|main|start|Exception contacting my server 
+|edu.csus.ecs.pc2.core.transport.TransportException: Connection refused: connect
+|    at edu.csus.ecs.pc2.core.transport.TransportManager.connectToMyServer (TransportManager.java:197)
+|    at edu.csus.ecs.pc2.core.transport.connection.ConnectionManager.connectToMyServer (ConnectionManager.java:99)
+|    at edu.csus.ecs.pc2.core.InternalController.start (InternalController.java:2853)
+|    at edu.csus.ecs.pc2.Starter.main (Starter.java:49)
+200701 191518.218|INFO|main|info|Unable to contact server at 203.162.10.117:0 Connection refused: connect
